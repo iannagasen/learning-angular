@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.valid {
+  border-bottom: solid green;
+}
+
+.invalid {
+  border-bottom: solid red;
+}
+
+@layer components {
+  /* Define your custom class */
+  .copyright {
+    @apply w-full bg-gray-200 font-sans; /* Applying multiple utility classes */
+  }
+}

@@ -1,0 +1,28 @@
+<h1>Choose a product</h1>
+<ul class="list-disc">
+  <li
+    *ngFor="let product of products | sort; 
+            let i=index"
+    (click)="setSelectedProduct(product)"
+  >
+    {{i+1}}. {{product.name | uppercase}} - {{product.price | currency:'EUR'}} 
+    {{product | json}}
+  </li>
+</ul>
+
+
+<ng-container *ngIf="selectedProduct; else noProduct">
+  <app-product-details 
+    #product
+    [product]="selectedProduct"
+    (bought)="onBuy($event)"
+  />
+</ng-container>
+
+<ng-template #noProduct>No product selected</ng-template>
+
+<h3>Offers</h3>
+<ng-template appProductHost></ng-template>
+
+<div *appPermission="['admin', 'agent']">Agent DIV</div>
+<div *appPermission="['admin', 'noAgent']">Non Agent Div</div>
